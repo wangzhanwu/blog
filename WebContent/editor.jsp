@@ -5,7 +5,6 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>写文章</title>
 	<script type="text/javascript" charset="utf-8" src="${contextPath }/static/ueditor/ueditor.config.js"></script>
@@ -19,6 +18,20 @@
 </head>
 <body>
 	<div id="home">
+	    <div id="main_login">
+			<c:choose>
+				<c:when test="${empty sessionScope.username }">
+					<span><a href="javascript:void(0)" onclick="main_login()">登录</a></span>
+					<span>|</span> 
+					<span><a href="javascript:void(0)" onclick="main_register()">注册</a></span>
+				</c:when>
+				<c:otherwise>
+					<span><a href="javascript:void(0)">欢迎您，${sessionScope.username }</a></span>
+					<span>|</span> 
+					<span><a href="javascript:void(0)" onclick="logout()">退出</a></span>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<!-- header -->
 		<%@include file="common/header.jsp" %>
 		<div class="main" style="margin-top: -30px;">
@@ -38,16 +51,21 @@
 						<div style="clear: both"></div>
 						<textarea id="summary" rows="3" cols="121"></textarea>
 
-						<label class="control-label">标签</label>
+						<!-- <label class="control-label">标签</label>
 						<div style="clear: both"></div>
-						<input type="text" list="itemlist" name="category">
+						<input type="text" id="category" list="itemlist" name="category">
 						<datalist id="itemlist">
-						<option>item1</option>
-						<option>item2</option>
-						</datalist>
+						<option>随笔</option>
+						<option>编程</option>
+						</datalist> -->
 					</div>
 				</form>
 			</div>
+			<div id="button">
+				<button onclick="save()">保存</button>
+			</div>
+			
+			
 		</div>
 	</div>
 
@@ -55,5 +73,7 @@
 	<script>
 		UE.getEditor('editor');
 	</script>
+	<script type="text/javascript" src='${contextPath }/static/js/common.js'></script>
+	<script type="text/javascript" src='${contextPath }/static/js/jquery.min.js'></script>
 </body>
 </html>

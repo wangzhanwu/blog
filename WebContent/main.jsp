@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="common/default.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,52 +11,43 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="${contextPath }/static/css/main.css" />
 	<script type="text/javascript" src='${contextPath }/static/js/calendar.js'></script>
+	<script type="text/javascript" src='${contextPath }/static/js/jquery.min.js'></script>
+	<script type="text/javascript" src='${contextPath }/static/js/common.js'></script>
 </head>
 
-<body>
+<body onload="loadData()">
+	<c:if test="${!empty sessionScope.articles}">
+		<c:forEach items="${sessionScope.articles}" var = "article">
+				<script>console.log(article)</script>
+		</c:forEach>
+	</c:if>
+	
 	<div id="home">
+		<div id="main_login">
+			<c:choose>
+				<c:when test="${empty sessionScope.username }">
+					<span><a href="javascript:void(0)" onclick="main_login()">登录</a></span>
+					<span>|</span> 
+					<span><a href="javascript:void(0)" onclick="main_register()">注册</a></span>
+				</c:when>
+				<c:otherwise>
+					<span><a href="javascript:void(0)">欢迎您，${sessionScope.username }</a></span>
+					<span>|</span> 
+					<span><a href="javascript:void(0)" onclick="logout()">退出</a></span>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<!-- header -->
 		<%@include file="common/header.jsp" %>
 		<div id="main">
 			<div id="mainContent">
 				<div class="forFlow">
-
-					<div class="day">
-						<div class="dayTitle">
-							<a id="homepage1_HomePageDays_DaysList_ctl00_ImageLink"
-								href="//www.cnblogs.com/zhengyanbin2016/archive/2017/09/20.html">2017年9月20日</a>
-						</div>
-						<div class="postTitle">
-							<a id="homepage1_HomePageDays_DaysList_ctl00_DayList_TitleUrl_0"
-								class="postTitle2"
-								href="http://www.cnblogs.com/zhengyanbin2016/p/7559992.html">BAT的关于程序员的那些事</a>
-						</div>
-						<div class="postCon">
-							<div class="c_b_p_desc">
-								摘要: 你是否早有进入BAT公司的想法，但却因为对其不了解而在门外彷徨？
-								你是否想把技术团队打造成像BAT这些超级互联网公司，但却无从下手？ 你是否已经进入了BAT，但是不知道如何晋升而苦恼？
-								你是否早有进入BAT公司的想法，但却因为对其不了解而在门外彷徨？ 你是否想把技术团队打造成像BAT这些超级互联网公<a
-									href="http://www.cnblogs.com/zhengyanbin2016/p/7559992.html"
-									class="c_b_p_desc_readmore">阅读全文</a>
-							</div>
-						</div>
-						<div class="clear"></div>
-						<div class="postDesc">
-							posted @ 2017-09-20 10:04 郑彦彬 阅读(243) 评论(0) <a
-								href="https://i.cnblogs.com/EditPosts.aspx?postid=7559992"
-								rel="nofollow">编辑</a>
-						</div>
-						<div class="clear"></div>
-					</div>
-
-
-					<div class="day">
-						<div class="dayTitle">
-							<a id="homepage1_HomePageDays_DaysList_ctl01_ImageLink"
-								href="//www.cnblogs.com/zhengyanbin2016/archive/2017/08/17.html">2017年8月17日</a>
-						</div>
-
-						<div class="postTitle">
+				
+				
+				
+				
+				
+					<div class="postTitle">
 							<a id="homepage1_HomePageDays_DaysList_ctl01_DayList_TitleUrl_0"
 								class="postTitle2"
 								href="http://www.cnblogs.com/zhengyanbin2016/p/7381513.html">表达式</a>
@@ -169,8 +161,7 @@
 								rel="nofollow">编辑</a>
 						</div>
 						<div class="clear"></div>
-					</div>
-
+					
 				</div>
 			</div>
 			<!-- 侧边栏 -->

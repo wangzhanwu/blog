@@ -26,8 +26,13 @@ public class ArticleDaoImpl implements ArticleDao{
 	}
 	
 	public List<Map<String, Object>> getArticlesByUserId(int userId) {
-		String sql = "select * from t_article where user_id = ? order by update_time desc";
+		String sql = "select id, title, author, content, description,create_time, user_id  from t_article where user_id = ? order by update_time desc";
 		return DBUtils.queryForList(sql, userId);
+	}
+	
+	public int save(String title, String content, String author, String description, Integer userId) {
+		String sql = "insert into t_article(title, content, author, description,user_id) values (?,?,?,?,?)";
+		return DBUtils.update(sql,title, content, author, description, userId);
 	}
 	
 	public static void main(String[] args) {

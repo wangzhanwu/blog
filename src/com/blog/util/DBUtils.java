@@ -262,8 +262,9 @@ public class DBUtils {
 	
 	
 	public static void main(String[] args) throws SQLException, NoSuchFieldException, SecurityException {
-		User user = queryForBean("select * from t_user where username = ?", User.class, "wang");
-		System.out.println(user);
+		String sql = "select id, title, author, content, description,create_time, user_id from t_article where user_id = ? order by update_time desc";
+		List<Map<String, Object>> list = queryForList(sql, 2);
+		System.out.println(list.size());
 	}
 	
 

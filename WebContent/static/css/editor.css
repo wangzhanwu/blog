@@ -6,12 +6,12 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 }
 
 .main {
-	width: 1000px;
+	width: 930px;
     margin: 40px auto;
     position: relative;
     min-height: 600px;
     background: #fff;
-    padding: 30px;
+    padding: 20px;
 }
 
 /*文章标题*/
@@ -21,7 +21,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
     border: none;
     border-bottom: 2px dotted #e4e4e4;
     box-shadow: none;
-    width: 1000px;
+    width: 930px;
     height: 34px;
     padding: 6px 1px;
     background-color: #fff;
@@ -30,7 +30,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 
 #editor {
 	margin:0px auto; 
-	width:1000px;
+	width:930px;
 	height:500px;
 }
 
@@ -44,10 +44,11 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 #article-form .form-group .control-label {
     float: left;
     vertical-align: top;
-    margin-top: 0;
+    margin-top: 5px;
     margin-bottom: 0;
     box-sizing: border-box;
     font-size: 14px;
+    color: #333;
 }
 
 #article-form .form-group .control-right {
@@ -55,14 +56,26 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
     vertical-align: top;
     padding: 0 15px;
     box-sizing: border-box;
+    margin-top: 5px;
+    color: #333;
 }
 
 #summary {
+	width: 930px;
 	margin-left: 0px;
 	
 }
 
 .form-group input {
-	width: 1000px;
+	width: 930px;
 	height: 25px;
+	color: #333;
+}
+
+#button button{
+	display:block;
+	margin: 0px auto;
+	width: 60px;
+	height:30px;
+	color: #333;
 }

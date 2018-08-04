@@ -28,7 +28,11 @@ body {
     background-repeat: no-repeat;
     font-family: 微软雅黑;
 }
-
+#main_login {
+	float: right;
+	margin-right: 10px;
+	line-height: 40px;
+}
 /*start: 标题*/
 #header {
     position: relative;

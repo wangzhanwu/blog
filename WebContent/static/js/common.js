@@ -193,5 +193,67 @@ function checkRepassword(mine) {
 		$(mine).parent().next().hide();
 	}
 }
+/***************************************************************/
+/**
+ * 登录
+ */
+function main_login() {
+	window.location.href = 'login.jsp';
+}
+
+/**
+ * 注册
+ */
+function main_register() {
+	window.location.href = 'register.jsp';
+}
 
 
+function loadData() {
+	$.get('getArticlesServlet', function(data) {});
+}
+
+function save() {
+	var title = $('#article_title').val();
+	var content = UE.getEditor('editor').getContent();
+	var summary = $('#summary').val();
+//	var category = $('#category').val();
+	if(title == null || title.length == 0) {
+		alert('文章标题不能为空！');
+		return false;
+	}
+	if(content == null || content.length == 0) {
+		alert('文章内容不能为空！');
+		return false;
+	}
+	if(summary == null || summary.length == 0) {
+		if(content.length <= 150) {
+			summary = trim(content.substring(0));
+		} else {
+			summary = trim(content.substr(0, 150));
+			
+		}
+	}
+	$.ajax({
+		type: 'post',
+		url: 'saveArticleServlet',
+		data: {'title': title, 'content': content, 'summary':summary},
+		error: function() {
+			alert('保存失败！');
+		},
+		success: function(data) {
+			if(data == -1) {
+				alert('保存失败！');
+			} if(data == -2) {
+				alert('未登录，请登录后提交！');
+			} else {
+				alert('保存成功！');
+			}
+		}
+	});
+}
+
+function trim(str) {
+	return str.replace(/\s/g,'').replace(/[\r\n]/g, '');
+}
+	

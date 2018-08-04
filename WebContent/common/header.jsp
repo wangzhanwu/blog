@@ -12,11 +12,9 @@
 	<div id="navigator">
 		<ul id="navList">
 			<li><a id="blog_nav_myhome" class="menu"
-				href="http://www.cnblogs.com/zhengyanbin2016/">首页</a></li>
+				href="main.jsp">首页</a></li>
 			<li><a id="blog_nav_rss" class="menu"
 				href="http://www.cnblogs.com/zhengyanbin2016/rss">订阅</a></li>
-			<li><a id="blog_nav_contact" class="menu" rel="nofollow"
-				href="https://msg.cnblogs.com/send/%E9%83%91%E5%BD%A6%E5%BD%AC">联系</a></li>
 			<li><a id="blog_nav_admin" class="menu" rel="nofollow"
 				href="https://i.cnblogs.com/">管理</a></li>
 			<li><a id="blog_nav_newpost" class="menu" rel="nofollow"

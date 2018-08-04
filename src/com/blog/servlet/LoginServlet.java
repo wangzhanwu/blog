@@ -2,6 +2,8 @@ package com.blog.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.servlet.ServletException;
@@ -11,8 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.blog.bean.User;
+import com.blog.dao.ArticleDao;
 import com.blog.dao.UserDao;
+import com.blog.dao.impl.ArticleDaoImpl;
 import com.blog.dao.impl.UserDaoImpl;
+
+import net.sf.json.JSONArray;
 
 /**
  * 用户登录
@@ -52,9 +58,15 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				//用户存在且账号密码正确，将use放入session
 				out.write("1");
+				
+				ArticleDao articleDao = new ArticleDaoImpl();
+				List<Map<String, Object>> articles = articleDao.getArticlesByUserId(user.getId());
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
 				session.setAttribute("username", user.getUsername());
+				
+				session.setAttribute("articles", JSONArray.fromObject(articles).toString());
 			}
 		}
 	}

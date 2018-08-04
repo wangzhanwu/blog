@@ -8,10 +8,7 @@
 		</div>
 		<div id="blog_news">
 			<div id="profile_block">
-				昵称: 花间一壶酒<br /> 
-				粉丝: 100<br />
-				文章 : 10<br />
-				评论 : 0
+				昵称: ${sessionScope.username }<br /> 
 			</div>
 			<div id="calendar"></div>
 		</div>

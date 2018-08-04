@@ -38,5 +38,16 @@ public interface ArticleDao {
 	 * @param userId
 	 * @return
 	 */
-	List<Map<String, Object>> getArticlesByUserId(int userId);
+	List<Map<String, Object>> getArticlesByUserId(int userId);;
+	
+	/**
+	 * 保存文章
+	 * @param title
+	 * @param content
+	 * @param author
+	 * @param description
+	 * @param userId
+	 * @return
+	 */
+	int save(String title, String content, String author, String description, Integer userId);
 }
